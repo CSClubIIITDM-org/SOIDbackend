@@ -8,27 +8,6 @@ const memberSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  education: {
-    type: String,
-    required: true,
-  },
-  about: {
-    type: String,
-    required: true,
-  },
-  number: {
-    type: Number,
-  },
-  researchInterest: {
-    type: String,
-    required: true,
-  },
-  websiteLink: {
-    type: String,
-  },
-  email: {
-    type: String,
-  },
   desc: {
     type: String,
     required: true,

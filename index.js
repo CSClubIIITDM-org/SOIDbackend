@@ -31,7 +31,7 @@ app.use("/api/common", commonRoute);
 app.use("/api/admin/dashboard", adminDashboardRoute);
 
 app.get("/", (req, res) => {
-  res.send(`<p>Project SMILE backend</p>`);
+  res.send(`<p>Project SIDI backend</p>`);
 });
 
 app.listen(PORT, () => console.log(`server up and running at  ${PORT}`));

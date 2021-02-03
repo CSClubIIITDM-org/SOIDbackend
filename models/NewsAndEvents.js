@@ -1,18 +1,14 @@
 const mongoose = require("mongoose");
 
-const culturalSchema = mongoose.Schema({
+const newsSchema = mongoose.Schema({
   image: {
     type: Buffer,
   },
-  event: {
+  newsTitle: {
     type: String,
     required: true,
   },
   desc: {
-    type: String,
-    required: true,
-  },
-  eventDate: {
     type: String,
     required: true,
   },
@@ -22,12 +18,12 @@ const culturalSchema = mongoose.Schema({
   },
 });
 
-culturalSchema.methods.toJSON = function () {
+newsSchema.methods.toJSON = function () {
   const result = this.toObject();
   delete result.image;
   return result;
 };
 
-const Cultural = mongoose.model("CulturalActivity", culturalSchema);
+const NewsAndEvents = mongoose.model("NewsAndEvents", newsSchema);
 
-module.exports = Cultural;
+module.exports = NewsAndEvents;

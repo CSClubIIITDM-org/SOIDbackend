@@ -5,19 +5,7 @@ const researchSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  agency: {
-    type: String,
-    required: true,
-  },
-  funds: {
-    type: Number,
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-  },
-  years: {
+  subheadings: {
     type: String,
     required: true,
   },
