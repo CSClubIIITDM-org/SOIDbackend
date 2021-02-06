@@ -3,10 +3,12 @@ const About = require("../../models/About");
 const Contact = require("../../models/Contact");
 const Facility = require("../../models/Facility");
 const Member = require("../../models/Members");
-const Cultural = require("../../models/Motivation");
+const Motivation = require("../../models/Motivation");
+const NewsAndEvents = require("../../models/NewsAndEvents");
+const Objectives = require("../../models/Objectives");
 const Publication = require("../../models/Publication");
 const Research = require("../../models/Research");
-const Carousal = require("../../models/Carousal");
+
 
 //ABOUT
 
@@ -36,6 +38,17 @@ router.get("/publication", async (req, res) => {
   try {
     const publication = await Publication.find().exec();
     res.status(200).send({ status: "200", message: publication });
+  } catch (error) {
+    res.status(200).send({ status: "400", message: error });
+  }
+});
+
+//Objectives
+
+router.get("/objective", async (req, res) => {
+  try {
+    const objective = await Objectives.find().exec();
+    res.status(200).send({ status: "200", message: objective });
   } catch (error) {
     res.status(200).send({ status: "400", message: error });
   }
@@ -83,41 +96,31 @@ router.get("/member/:id", async (req, res) => {
   }
 });
 
-//CULTURAL ACTIVITY
+//MOTIVATION
 
-router.get("/cultural", async (req, res) => {
+router.get("/motivation", async (req, res) => {
   try {
-    const cultural = await Cultural.find({});
-    res.status(200).send({ status: "200", message: cultural });
+    const motivation = await Motivation.find({});
+    res.status(200).send({ status: "200", message: motivation });
   } catch (error) {
     res.status(200).send({ status: "400", message: error });
   }
 });
 
-router.get("/cultural/:id", async (req, res) => {
+//News And Events
+
+router.get("/newsandevents", async (req, res) => {
   try {
-    const result = await Cultural.findById(req.params.id);
-    res.set("Content-Type", "image/jpeg");
-    res.status(200).send(result.image);
+    const news = await NewsAndEvents.find({});
+    res.status(200).send({ status: "200", message: news });
   } catch (error) {
     res.status(200).send({ status: "400", message: error });
   }
 });
 
-//CAROUSAL IMAGE
-
-router.get("/carousal", async (req, res) => {
+router.get("/newsandevents/:id", async (req, res) => {
   try {
-    const carousal = await Carousal.find().exec();
-    res.status(200).send({ status: "200", message: carousal });
-  } catch (error) {
-    res.status(200).send({ status: "400", message: error });
-  }
-});
-
-router.get("/carousal/:id", async (req, res) => {
-  try {
-    const result = await Carousal.findById(req.params.id);
+    const result = await NewsAndEvents.findById(req.params.id);
     res.set("Content-Type", "image/jpeg");
     res.status(200).send(result.image);
   } catch (error) {
