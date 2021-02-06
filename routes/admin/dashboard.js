@@ -6,6 +6,7 @@ const Publication = require("../../models/Publication");
 const { handleImageUpload } = require("../../middlewares/imgUpload");
 const Facility = require("../../models/Facility");
 const Member = require("../../models/Members");
+const Motivation = require("../../models/Motivation");
 const Cultural = require("../../models/CulturalActivity");
 const Carousal = require("../../models/Carousal");
 const verify = require("./verify");
