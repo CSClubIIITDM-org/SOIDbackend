@@ -23,7 +23,7 @@ const verify = require("./verify");
 //   }
 // });
 
-//EDIT ABOUT
+//EDIT ABOUTUS
 
 router.put("/about", verify, async (req, res) => {
   try {
