@@ -1,5 +1,5 @@
 {
-  "name": "projectsmilebackend",
+  "name": "projectsidibackend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "devStart": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Shelcia",
+  "author": "Shelcia, Sharuq",
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
