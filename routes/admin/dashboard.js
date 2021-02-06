@@ -7,8 +7,8 @@ const { handleImageUpload } = require("../../middlewares/imgUpload");
 const Facility = require("../../models/Facility");
 const Member = require("../../models/Members");
 const Motivation = require("../../models/Motivation");
-const Cultural = require("../../models/CulturalActivity");
-const Carousal = require("../../models/Carousal");
+
+
 const verify = require("./verify");
 
 // router.post("/about", async (req, res) => {
@@ -339,53 +339,53 @@ router.delete("/cultural", verify, async (req, res) => {
   }
 });
 
-//ADD CAROUSAL IMAGE
+// //ADD CAROUSAL IMAGE
 
-router.post("/carousal", handleImageUpload, verify, async (req, res) => {
-  const newImage = new Carousal({
-    image: req.file.buffer,
-    desc: req.body.desc,
-  });
+// router.post("/carousal", handleImageUpload, verify, async (req, res) => {
+//   const newImage = new Carousal({
+//     image: req.file.buffer,
+//     desc: req.body.desc,
+//   });
 
-  try {
-    await newImage.save();
-    res.status(200).send({ status: "200", message: "Carousal Image Added" });
-  } catch (error) {
-    res.status(200).send({ status: "500", message: "Internal Server Error" });
-  }
-});
+//   try {
+//     await newImage.save();
+//     res.status(200).send({ status: "200", message: "Carousal Image Added" });
+//   } catch (error) {
+//     res.status(200).send({ status: "500", message: "Internal Server Error" });
+//   }
+// });
 
-// UPDATE CAROUSAL IMAGE
+// // UPDATE CAROUSAL IMAGE
 
-router.put("/carousal/:id", handleImageUpload, verify, async (req, res) => {
-  let updatedImage = req.body;
+// router.put("/carousal/:id", handleImageUpload, verify, async (req, res) => {
+//   let updatedImage = req.body;
 
-  if (req.file) updatedImage.image = req.file.buffer;
-  try {
-    await Carousal.findByIdAndUpdate(req.params.id, updatedImage);
-    res.status(200).send({ status: "200", message: "Carousal Image Edited" });
-  } catch (error) {
-    res.status(200).send({ status: "500", message: "Internal Server Error" });
-  }
-});
+//   if (req.file) updatedImage.image = req.file.buffer;
+//   try {
+//     await Carousal.findByIdAndUpdate(req.params.id, updatedImage);
+//     res.status(200).send({ status: "200", message: "Carousal Image Edited" });
+//   } catch (error) {
+//     res.status(200).send({ status: "500", message: "Internal Server Error" });
+//   }
+// });
 
-//DELETE CAROUSAL IMAGE
+// //DELETE CAROUSAL IMAGE
 
-router.delete("/carousal", verify, async (req, res) => {
-  const { type } = req.user;
-  if (type !== "admin") {
-    res
-      .status(200)
-      .send({ status: "400", message: "Only Admin can access this" });
+// router.delete("/carousal", verify, async (req, res) => {
+//   const { type } = req.user;
+//   if (type !== "admin") {
+//     res
+//       .status(200)
+//       .send({ status: "400", message: "Only Admin can access this" });
 
-    return;
-  }
-  try {
-    const carousal = await Carousal.deleteOne({ _id: req.body._id });
-    res.status(200).send({ status: "200", message: "Deleted succesfully" });
-  } catch (error) {
-    res.status(200).send({ status: "500", message: "Internal Server error" });
-  }
-});
+//     return;
+//   }
+//   try {
+//     const carousal = await Carousal.deleteOne({ _id: req.body._id });
+//     res.status(200).send({ status: "200", message: "Deleted succesfully" });
+//   } catch (error) {
+//     res.status(200).send({ status: "500", message: "Internal Server error" });
+//   }
+// });
 
 module.exports = router;
